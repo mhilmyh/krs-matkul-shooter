@@ -22,7 +22,7 @@ function StealKRS(data = {}, jwt = process.env.JWT) {
 	axios
 		.post("https://krs.simak.ipb.ac.id/api/Krs", data, { headers })
 		.then((response) => console.log(response.data))
-		.catch((error) => console.log(error.response.data));
+		.catch((error) => console.log(error.response.data, data.KurikulumId));
 }
 
 function Main() {
@@ -36,7 +36,17 @@ function Main() {
 		PascaSitIn: false,
 		PascaMatrikulasi: false,
 	};
-	setInterval(() => StealKRS(GenderDanKeluarga), 2000);
+	const ManajemenKeuanganKonsumen = {
+		KurikulumId: 133630,
+		StatusMataKuliahId: 5,
+		KelasKuliah: "2",
+		KelasPraktikum: "0",
+		KelasResponsi: "0",
+		DiplomaProgramKeahlianId: 0,
+		PascaSitIn: false,
+		PascaMatrikulasi: false,
+	};
+	setInterval(() => StealKRS(GenderDanKeluarga), 1500);
 }
 
 Main();
