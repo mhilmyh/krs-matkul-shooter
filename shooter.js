@@ -35,7 +35,7 @@ function StealKRS(jwt = process.env.JWT) {
 }
 
 function Main() {
-	setInterval((jwt) => StealKRS(), 2000);
+	setInterval(() => StealKRS(), 2000);
 }
 
 Main();
