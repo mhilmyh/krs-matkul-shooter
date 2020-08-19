@@ -1,8 +1,8 @@
 require("dotenv").config();
 const axios = require("axios");
 
-function StealKRS(jwt = process.env.JWT) {
-	headers = {
+function StealKRS(data = {}, jwt = process.env.JWT) {
+	const headers = {
 		accept: "application/json, text/plain, */*",
 		"accept-encoding": "gzip, deflate, br",
 		"accept-language": "en-US,en;q=0.9,id;q=0.8",
@@ -18,7 +18,15 @@ function StealKRS(jwt = process.env.JWT) {
 		"user-agent":
 			"Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Mobile Safari/537.36",
 	};
-	data = {
+
+	axios
+		.post("https://krs.simak.ipb.ac.id/api/Krs", data, { headers })
+		.then((response) => console.log(response.data))
+		.catch((error) => console.log(error.response.data));
+}
+
+function Main() {
+	const GenderDanKeuangan = {
 		KurikulumId: 133614,
 		StatusMataKuliahId: 5,
 		KelasKuliah: "1",
@@ -28,14 +36,7 @@ function StealKRS(jwt = process.env.JWT) {
 		PascaSitIn: false,
 		PascaMatrikulasi: false,
 	};
-	axios
-		.post("https://krs.simak.ipb.ac.id/api/Krs", data, { headers })
-		.then((response) => console.log(response.data))
-		.catch((error) => console.log(error.response.data));
-}
-
-function Main() {
-	setInterval(() => StealKRS(), 2000);
+	setInterval(() => StealKRS(GenderDanKeuangan), 2000);
 }
 
 Main();
