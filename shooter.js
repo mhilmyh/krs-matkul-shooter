@@ -26,7 +26,7 @@ function StealKRS(data = {}, jwt = process.env.JWT) {
 }
 
 function Main() {
-	const GenderDanKeuangan = {
+	const GenderDanKeluarga = {
 		KurikulumId: 133614,
 		StatusMataKuliahId: 5,
 		KelasKuliah: "1",
@@ -36,7 +36,7 @@ function Main() {
 		PascaSitIn: false,
 		PascaMatrikulasi: false,
 	};
-	setInterval(() => StealKRS(GenderDanKeuangan), 2000);
+	setInterval(() => StealKRS(GenderDanKeluarga), 2000);
 }
 
 Main();
