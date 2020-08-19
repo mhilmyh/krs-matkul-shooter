@@ -1,12 +1,12 @@
+require("dotenv").config();
 const axios = require("axios");
 
-function StealKRS() {
+function StealKRS(jwt = process.env.JWT) {
 	headers = {
 		accept: "application/json, text/plain, */*",
 		"accept-encoding": "gzip, deflate, br",
 		"accept-language": "en-US,en;q=0.9,id;q=0.8",
-		authorization:
-			"Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDk2NTEiLCJleHAiOjE2MDA0OTcyMTgsImlzcyI6Imh0dHBzOi8vYXBpLmlwYi5hYy5pZCJ9.saBjXUu3q51eH9a1wGq2o-u5q3aHxP39P8YF3VIhREhl1GdqhbNhV47VcEcSJghU5PAuOVCjPE4aL2FNsRDnFj3tn4hvcfxFuqZXttHI5O4DX1Rw4LJWyZisoihD79iPOUXVcabxbzdm_HQDUUgWN525eBsSAAb9_b5UIeda4jNSnYv7IL6BDtjFMNlVjOMN7jBodvObWnR0lBoQFmEO01QrWtxN2K44rRvNTwPGVvA4kJLsiwkY0sa19RAneCxtGxof7G3uly5bT4k75obpxIqC7lJ20aAe-h2TKIIGmCgmZ5IKQA6tpiyCmODF1kK3xxiDkCN1KnlchmimBwKRkg",
+		authorization: `Bearer ${jwt}`,
 		"content-length": 177,
 		"content-type": "application/json;charset=UTF-8",
 		cookie: "_ga=GA1.3.86766915.1597712799; _gid=GA1.3.435139552.1597712799",
@@ -35,7 +35,7 @@ function StealKRS() {
 }
 
 function Main() {
-	setInterval(() => StealKRS(), 2000);
+	setInterval((jwt) => StealKRS(), 2000);
 }
 
 Main();

@@ -5,6 +5,8 @@
 	"main": "shoot.js",
 	"scripts": {
 		"start": "pm2 start shooter.js",
+		"stop": "pm2 stop shooter",
+		"kill": "pm2 kill",
 		"list": "pm2 ls",
 		"logs": "pm2 logs shooter"
 	},
@@ -12,6 +14,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"axios": "^0.19.2",
+		"dotenv": "^8.2.0",
 		"pm2": "^4.4.1"
 	}
 }
