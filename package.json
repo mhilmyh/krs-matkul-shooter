@@ -1,0 +1,17 @@
+{
+	"name": "krs-spray",
+	"version": "1.0.0",
+	"description": "",
+	"main": "shoot.js",
+	"scripts": {
+		"start": "pm2 start shooter.js",
+		"list": "pm2 ls",
+		"logs": "pm2 logs shooter"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"pm2": "^4.4.1"
+	}
+}
